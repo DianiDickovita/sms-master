@@ -1,4 +1,29 @@
 <?php
+session_start();
+if(isset($_POST) & !empty($_POST)){
+    //CSRF token validation
+    if(isset($_POST['csrf_token'])){
+        if($_POST['csrf_token'] == $_SESSION['csrf_token']){
+            echo "CSRF token validation success";
+        } else {
+            echo "problem with CSRF tokens";
+        }
+    }
+}
+
+
+//1.Create CSRF Token
+$token = md5(uniqid(rand(), true));
+$_SESSION['csrf_token'] = $token;
+ 
+//2.Adding CSRF Token to form
+
+
+//3.Validating CSRF Token
+?>
+
+
+<?php
 require_once('../include/login_header.php');
 ?>
 <?php
@@ -45,6 +70,7 @@ else{
     <div class="row"style="margin-top:10%; opacity: 0.8;">
         <div class="col l4 offset-l4 m6 offset-m3 s12">
             <form action="" method="POST">
+                <input type="hidden" name="csrf_token" value="<?php echo $token; ?>">
                     <div class="card-panel" style="border-radius: 15px;">
                             <div class="card-content">
                                 <h5 class="<?php if(isset($login_failed)) { echo "hide";} ?>" >Login Form</h5>
