@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 if(isset($_POST) & !empty($_POST)){
     //CSRF token validation

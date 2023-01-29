@@ -1,4 +1,8 @@
 <?php
+
+
+/*session_set_cookie_params(['samesite' => 'None']);*/
+
 session_start();
 if(isset($_POST) & !empty($_POST)){
     //CSRF token validation
@@ -159,7 +163,9 @@ else{
                                         <tr>
                                             <th>Contact</th>
                                             <td><?php  echo $contact; ?></td>
-                                        </tr>                                                              <tr>
+                                        
+                                        </tr>
+                                        <tr>
                                             <th>City</th>
                                             <td><?php  echo $city; ?></td>
                                         </tr>

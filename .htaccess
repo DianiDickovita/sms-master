@@ -2,4 +2,6 @@ Options -Indexes
 
 <IfModule mod_headers.c>
     Header always append X-Frame-Options SAMEORIGIN
+
 </IfModule>
+
